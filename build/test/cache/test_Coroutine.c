@@ -16,6 +16,8 @@ typedef struct
 
   int state;
 
+  int i;
+
 
 
 } CoroutineInfo;
@@ -26,33 +28,41 @@ void foo(CoroutineInfo *self)
 
 {
 
-  switch(self->state)
+  switch(self->state) { case 0:;
+
+  while(1)
 
   {
 
-    case 0:
 
 
+    self->i += 10;
 
-      self->state = 10;
+    if(self->i < 5)
 
-      break;
+    {
 
-    case 10:
+      self->state = 24; return; case 24:;
 
-
-
-      self->state = 0;
-
-      break;
+    }
 
 
 
 
+
+    self->i += 2;
+
+    self->state = 29; return; case 29:;
 
   }
 
+
+
+  };
+
 }
+
+
 
 void test_coroutine(void)
 

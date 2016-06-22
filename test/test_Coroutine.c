@@ -8,25 +8,30 @@ void tearDown(void) {}
 typedef struct
 {
   int state;
+  int i;
   //
 } CoroutineInfo;
 
 void foo(CoroutineInfo *self)
 {
-  switch(self->state)
+  startCoroutine();
+  while(1)
   {
-    case 0:
-      //do something
-      self->state = 10;
-      break;
-    case 10:
-      //do something
-      self->state = 0;
-      break;
-
-
+    
+    self->i += 10;
+    if(self->i < 5)
+    {
+      yield();
+    }
+    
+      
+    self->i += 2;
+    yield();
   }
+  
+  endCoroutine();
 }
+
 void test_coroutine(void)
 {
 	int i = 4;

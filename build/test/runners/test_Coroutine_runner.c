@@ -46,7 +46,7 @@ void resetTest(void)
 int main(void)
 {
   UnityBegin("test_Coroutine.c");
-  RUN_TEST(test_coroutine, 30);
+  RUN_TEST(test_coroutine, 35);
 
   return (UnityEnd());
 }
